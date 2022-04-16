@@ -231,7 +231,7 @@ int enableRawMode(int fd) {
     raw.c_oflag &= ~(OPOST);
     /* control modes - set 8 bit chars */
     raw.c_cflag |= (CS8);
-    /* local modes - choing off, canonical off, no extended functions,
+    /* local modes - echoing off, canonical off, no extended functions,
      * no signal chars (^Z,^C) */
     raw.c_lflag &= ~(ECHO | ICANON | IEXTEN | ISIG);
     /* control chars - set return condition: min number of bytes and timer. */
@@ -616,7 +616,7 @@ void editorFreeRow(erow *row) {
     free(row->hl);
 }
 
-/* Remove the row at the specified position, shifting the remainign on the
+/* Remove the row at the specified position, shifting the remaining on the
  * top. */
 void editorDelRow(int at) {
     erow *row;
